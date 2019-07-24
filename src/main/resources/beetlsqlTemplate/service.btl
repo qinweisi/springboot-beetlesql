@@ -1,0 +1,19 @@
+package ${package};
+import org.beetl.sql.core.annotatoin.*;
+
+import org.beetl.sql.core.SQLManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+${imports}
+/**
+ * @Description 接口
+ * @Author qinweisi
+ * @Date ${date(),"yyyy/MM/dd HH:mm"}
+**/
+@Service
+public class ${className} {
+
+    @Autowired
+    private SQLManager sqlManager;
+	
+}
