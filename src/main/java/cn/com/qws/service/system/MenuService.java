@@ -4,8 +4,6 @@ import cn.com.qws.common.Constants;
 import cn.com.qws.common.ResultJson;
 import cn.com.qws.dao.system.MenuDao;
 import cn.com.qws.entity.system.Menu;
-import cn.com.qws.common.Constants;
-import cn.com.qws.common.ResultJson;
 import org.beetl.sql.core.SQLManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

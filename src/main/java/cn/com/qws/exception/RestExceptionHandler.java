@@ -2,8 +2,6 @@ package cn.com.qws.exception;
 
 import cn.com.qws.common.Constants;
 import cn.com.qws.common.ResultJson;
-import cn.com.qws.common.Constants;
-import cn.com.qws.common.ResultJson;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -116,7 +114,7 @@ public class RestExceptionHandler {
     public ResultJson requestNotReadable(HttpMessageNotReadableException ex) {
         System.out.println("400..requestNotReadable");
         ex.printStackTrace();
-        return retParam(1005, Constants.MsgCode.FAIL);
+        return retParam(400, Constants.MsgCode.FAIL);
     }
 
     /**

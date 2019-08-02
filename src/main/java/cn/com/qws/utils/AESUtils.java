@@ -1,4 +1,4 @@
-package cn.com.qws.common;
+package cn.com.qws.utils;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -9,7 +9,7 @@ import javax.crypto.spec.SecretKeySpec;
  * @Author qinweisi
  * @Description AES对称加密
  **/
-public class AESUtil {
+public class AESUtils {
 
     public static final String KEY = "mkosjdufiw!.Qsaq";
     

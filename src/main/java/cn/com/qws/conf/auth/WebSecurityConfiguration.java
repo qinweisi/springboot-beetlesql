@@ -1,5 +1,6 @@
 package cn.com.qws.conf.auth;
 
+import cn.com.qws.common.Constants;
 import cn.com.qws.service.system.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
@@ -28,32 +29,29 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * 需要放行的URL
      */
-    private static final String[] AUTH_WHITELIST = {
-            // -- register url
-            "/login*",
-            "/gen",
-            // -- swagger ui
-            "/v2/api-docs",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
-            "/swagger-ui.html",
-            "/webjars/**",
-            "/hardware/**",
-            "/**",
-            "/app/**",
-            "/data/download*"
-            // other public endpoints of your API may be appended to this array
-    };
+//    private static final String[] AUTH_WHITELIST = {
+//            // -- register url
+//            "/login*",
+//            "/gen",
+//            // -- swagger ui
+//            "/v2/api-docs",
+//            "/swagger-resources",
+//            "/swagger-resources/**",
+//            "/configuration/ui",
+//            "/configuration/security",
+//            "/swagger-ui.html",
+//            "/doc.html",
+//            "/webjars/**",
+//            "/hardware/**",
+//            "/**",
+//            "/app/**",
+//            "/data/download*"
+//            // other public endpoints of your API may be appended to this array
+//    };
 
-//    @Autowired
-//    private UserDetailsService userDetailsService;
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
-//    @Autowired
-//    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private MySecurityInterceptor myFilterSecurityInterceptor;
 
@@ -72,7 +70,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.exceptionHandling().accessDeniedHandler(getAccessDeniedHandler());
         http.addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class);
-        http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll().anyRequest().authenticated().and().
+        http.authorizeRequests().antMatchers(Constants.AUTH_WHITELIST).permitAll().anyRequest().authenticated().and().
                 addFilter(new JWTAuthenticationFilter(authenticationManager())).logout().permitAll()
                 .and().cors().and().csrf().disable();
     }
@@ -80,11 +78,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     // 该方法是登录的时候会进入
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
         // 使用自定义身份验证组件
-//        auth.userDetailsService(customUserDetailsService).passwordEncoder(bCryptPasswordEncoder); // user Details Service验证;
+        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
-
 
     @Bean
     public CacheManager cacheNabger() {

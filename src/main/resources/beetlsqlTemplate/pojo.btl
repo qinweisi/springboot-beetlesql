@@ -11,7 +11,7 @@ public class ${className} ${!isEmpty(ext)?"extends "+ext} ${implSerializable?"im
 
 	<%for(attr in attrs){
     if(!isEmpty(attr.comment)){%>
-        // ${attr.comment}
+    // ${attr.comment}
     <%		}%>
 	private ${attr.type} ${attr.name} ;
 	<%}%>

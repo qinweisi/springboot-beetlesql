@@ -1,16 +1,14 @@
-package cn.com.qws.entity.system;
-import org.beetl.sql.core.annotatoin.Table;
+package cn.com.qws.dto.system;
 
+import io.swagger.annotations.ApiModel;
 
 /**
  * @Author qinweisi
- * @Description 菜单表
+ * @Description 菜单
  **/
-@Table(name="environment_test.t_menu")
-public class Menu {
+@ApiModel("菜单信息")
+public class MenuDto {
 
-	// pk
-	private Integer id ;
 	// 排序
 	private Integer orderNo ;
 	// 父级菜单
@@ -21,21 +19,6 @@ public class Menu {
 	private String state ;
 	// 菜单地址
 	private String url ;
-	
-	/**
-	* pk
-	*@return 
-	*/
-	public Integer getId(){
-		return  id;
-	}
-	/**
-	* pk
-	*@param  id
-	*/
-	public void setId(Integer id ){
-		this.id = id;
-	}
 	
 	/**
 	* 排序

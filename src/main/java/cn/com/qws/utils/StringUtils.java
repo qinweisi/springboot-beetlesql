@@ -1,4 +1,4 @@
-package cn.com.qws.common;
+package cn.com.qws.utils;
 
 import java.util.Random;
 import java.util.UUID;

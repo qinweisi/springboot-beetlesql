@@ -99,7 +99,7 @@ public class GenController {
         TableDesc desc = sqlManager.getMetaDataManager().getTable(table);
         FileWriter writer = new FileWriter(new File(target));
         MDCodeGen mdCodeGen = new MDCodeGen();
-        mdCodeGen.setMapperTemplate(config.getTemplate(templatePath + "/md1.btl"));
+        mdCodeGen.setMapperTemplate(config.getTemplate(templatePath + "/md.btl"));
         mdCodeGen.genCode(sqlManager.getBeetl(), desc, sqlManager.getNc(), "a", writer);
         writer.close();
     }

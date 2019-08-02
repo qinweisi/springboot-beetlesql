@@ -7,6 +7,16 @@ package cn.com.qws.common;
  **/
 public class Constants {
 
+    //签名秘钥
+    public  static  final  String SYSTEM_TOKEN_KEY = "qmhd@2018!!";
+    //
+    public static final String TOKEN_CLAIMS_UID = "TOKEN_CLAIMS_UID_1";
+    public static final String TOKEN_CLAIMS_NAME = "TOKEN_CLAIMS_NAME_1";
+    // redis中token的key
+    public static final String REDIS_USER_TOKEN_KEY = "USER_TOKEN_1_";
+    //过期时间
+    public static final long TOKEN_TIMEOUT_LONG = 60;
+
     public class MsgCode {
 
         // 操作成功
@@ -48,5 +58,25 @@ public class Constants {
         // 服务器内部错误
         public final static int INTERNAL_SERVER_ERROR = 500;
     }
+
+    /**
+     * 白名单
+     */
+    public static final String[] AUTH_WHITELIST = {
+            // -- register url
+            "/login/*",
+            "/gen",
+            // -- swagger ui
+            "/v2/api-docs",
+            "/swagger*",
+            "/configuration/ui",
+            "/configuration/security",
+            "/doc.html",
+            "/webjars/*",
+            "/hardware/**",
+            "/app/**",
+            "/data/download*"
+            // other public endpoints of your API may be appended to this array
+    };
 
 }

@@ -1,14 +1,26 @@
 
 findByCondition
 ===
+@ /*
+    根据条件查询
+@ */
+
 	select #use("baseCols")# FROM t_users a WHERE  #use("condition")#
 
 baseCols
 ===
-	a.id,a.login_name,a.password,a.name,a.company_name,a.company_code,a.create_time,a.create_user,a.update_time,a.update_user
+@ /*
+    基础字段
+@ */
+
+	a.id,a.login_name,a.name,a.company_name,a.company_code,a.create_time,a.create_user,a.update_time,a.update_user
 
 condition
 ===
+@ /*
+    动态条件
+@ */
+
 	1 = 1
 	@if(!isEmpty(id)){
 	 AND a.id = #id#
@@ -44,6 +56,10 @@ condition
 
 updateSample
 ===
+@ /*
+    动态更新
+@ */
+
 	@if(!isEmpty(id)){
 	 AND a.id = #id#
 	@}
@@ -77,12 +93,37 @@ updateSample
 
 updateByCondition
 ===
-    UPDATE t_users a SET #use("updateSample")# WHERE #use("condition")#
+@ /*
+    根据动态条件动态更新
+@ */
 
-selectByTest
+    UPDATE t_users a SET #use("updateSample")# WHERE #use("condition")#
+    
+updateById
 ===
-    select * from t_users where 1=1
+@ /*
+    根据id更新
+@ */
+
+    UPDATE t_users a SET #use("updateSample")# WHERE a.id = #id#
 
 selectByLoginName
 ===
+@ /*
+    根据用户名查询用户信息
+@ */
+
     select a.* from t_users a where a.login_name = #loginName#
+
+queryPage
+===
+@ /*
+    分页
+@ */
+
+    SELECT 
+        @pageTag() {  
+            #use("baseCols")# 
+        @}  
+    FROM t_users a WHERE #use("condition")#
+   

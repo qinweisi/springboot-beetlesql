@@ -1,7 +1,6 @@
 package cn.com.qws.dao.system;
 
 import cn.com.qws.entity.system.Menu;
-import cn.com.qws.entity.system.Menu;
 import org.beetl.sql.core.annotatoin.Param;
 import org.beetl.sql.core.annotatoin.SqlResource;
 import org.beetl.sql.core.mapper.BaseMapper;

@@ -1,10 +1,8 @@
 package cn.com.qws.service.system;
 
-
 import cn.com.qws.common.GetRequest;
 import cn.com.qws.entity.system.Menu;
 import cn.com.qws.entity.system.Users;
-import cn.com.qws.common.GetRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

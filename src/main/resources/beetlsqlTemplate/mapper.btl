@@ -4,10 +4,11 @@ import org.beetl.sql.core.db.KeyHolder;
 import org.beetl.sql.core.engine.PageQuery;
 import org.beetl.sql.core.mapper.BaseMapper;
 ${imports}
-/*
-* 
-* gen by beetlsql mapper ${date(),"yyyy-MM-dd"}
-*/
+/**
+ * @Description 接口
+ * @Author qinweisi
+ * @Date ${date(),"yyyy/MM/dd HH:mm"}
+**/
 public interface ${className} extends BaseMapper<${entityClass}> {
 	
 }

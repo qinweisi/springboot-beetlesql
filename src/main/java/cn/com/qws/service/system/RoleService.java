@@ -1,19 +1,16 @@
-package ${package};
-
-import org.beetl.sql.core.annotatoin.*;
-import cn.com.qmhd.unified_sms.service.base.BaseService;
+package cn.com.qws.service.system;
 
 import org.beetl.sql.core.SQLManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-${imports}
+
 /**
  * @Description 接口
  * @Author qinweisi
- * @Date ${date(),"yyyy/MM/dd HH:mm"}
+ * @Date 2019/07/24 14:36
 **/
 @Service
-public class ${className} extends BaseService{
+public class RoleService {
 
     @Autowired
     private SQLManager sqlManager;

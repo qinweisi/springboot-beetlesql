@@ -2,9 +2,6 @@ package cn.com.qws.conf.auth;
 
 import cn.com.qws.dao.system.MenuDao;
 import cn.com.qws.entity.system.Menu;
-import cn.com.qws.service.system.MenuService;
-import cn.com.qws.entity.system.Menu;
-import cn.com.qws.service.system.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
@@ -25,9 +22,6 @@ public class JWTFilterInvocationSecurityMetadataSourceService implements FilterI
 
     @Autowired
     private MenuDao menuDao;
-    @Autowired
-    private MenuService menuService;
-
 
     @SuppressWarnings("unused")
     private HashMap<String, Collection<ConfigAttribute>> resourceMap = null;
@@ -37,7 +31,7 @@ public class JWTFilterInvocationSecurityMetadataSourceService implements FilterI
         resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
         System.out.println("---------------------> 开始初始化权限数据 <---------------------");
         ConfigAttribute cfg;
-        List<Menu> permissions = menuDao.findByState(1);
+        List<Menu> permissions = menuDao.findAll();
         for (Menu permission : permissions) {
             Collection<ConfigAttribute> array = new ArrayList<>();
             cfg = new SecurityConfig(permission.getName());

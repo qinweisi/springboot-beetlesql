@@ -1,50 +1,80 @@
 <%
-
-var tableAlias = alias==null?"":(alias+".");//如果没有设置alias，则默认为t
+    var tableAlias = alias == null ? "a.":(alias + ".");//如果没有设置alias，则默认为t
 %>
-sample
-===
-* 注释
 
-	select ${PS}use("cols")${PE} from ${tableName} ${alias} where  ${PS}use("condition")${PE}
-
-cols
+findByCondition
 ===
+@ /*
+    根据条件查询
+@ */
+
+	select ${PS}use("baseCols")${PE} FROM ${tableName} ${alias} WHERE  ${PS}use("condition")${PE}
+
+baseCols
+===
+@ /*
+    基础字段
+@ */
+
 	<%
 	print("\t");
 	for(col in cols){
-	 var colName=tableAlias+col+(colLP.last?"":","); 
-	 print(colName);
-	}%> 
-
-
-updateSample
-===
-	
-	<%
-	print("\t");
-	for(col in cols){
-	 var colName=tableAlias+col;
-	 var attr = @nc.getPropertyName(col);
-	 print(colName+"="+PS+attr+PE);
-	 if(!colLP.last){
-	 	print(",");
-	 }
-	}%>
+        var colName = tableAlias + col + ",";
+        print(colName);
+	}
+	%>
 
 
 condition
 ===
+@ /*
+    动态条件
+@ */
 
-	1 = 1  
+	1 = 1
 	<%
 	for(col in cols){
-	 var colName=tableAlias+col;
+	 var colName = tableAlias + col;
 	 var attr = @nc.getPropertyName(col);
 	%>
 	${SS}if(!isEmpty(${attr})){${SE}
-	 and ${colName}=${PS+attr+PE}
+	 AND ${colName} = ${PS + attr + PE}
 	${SS}}${SE}
 	<%}%>
-	
-	
+
+
+updateSample
+===
+@ /*
+    动态更新
+@ */
+
+	<%
+	for(col in cols){
+	 var colName = tableAlias + col;
+	 var attr = @nc.getPropertyName(col);
+	%>
+	${SS}if(!isEmpty(${attr})){${SE}
+	 AND ${colName} = ${PS + attr + PE}
+	${SS}}${SE}
+	<%}%>
+
+updateById
+===
+@ /*
+    根据id更新
+@ */
+
+    UPDATE ${tableName} ${alias} SET #use("updateSample")# WHERE ${alias}.id = #id#
+
+queryPage
+===
+@ /*
+    分页
+@ */
+
+    SELECT
+        @pageTag() {
+            #use("baseCols")#
+        @}
+    FROM ${tableName} ${alias} WHERE #use("condition")#

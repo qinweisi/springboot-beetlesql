@@ -1,7 +1,6 @@
 package cn.com.qws.conf.auth;
 
 import cn.com.qws.exception.RestExceptionHandler;
-import cn.com.qws.exception.RestExceptionHandler;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
