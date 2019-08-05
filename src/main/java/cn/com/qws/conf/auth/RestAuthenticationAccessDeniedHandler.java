@@ -18,7 +18,6 @@ public class RestAuthenticationAccessDeniedHandler implements AccessDeniedHandle
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         PrintWriter writer = response.getWriter();
-//        writer.println(ResultGenerator.genUnauthResult(accessDeniedException.getMessage()));
         writer.println(RestExceptionHandler.retParam(999,"没有权限，请联系管理员"));
     }
 

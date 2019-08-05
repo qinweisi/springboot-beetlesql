@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MenuGrantedAuthority implements GrantedAuthority {
+
     private static final long serialVersionUID = 6871727498260208564L;
     private String name;
     private String url;

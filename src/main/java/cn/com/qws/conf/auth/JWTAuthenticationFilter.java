@@ -102,8 +102,8 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
                 logger.info("当前url: " + currentURL + "在白名单内");
                 return true;
             }
-            logger.info("当前url: " + currentURL + "不在白名单内");
         }
+        logger.info("当前url: " + currentURL + "不在白名单内");
         return false;
     }
 

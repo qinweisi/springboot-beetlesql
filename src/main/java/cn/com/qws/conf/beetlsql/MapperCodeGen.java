@@ -5,6 +5,7 @@ import org.beetl.sql.core.db.TableDesc;
 import org.beetl.sql.ext.gen.CodeGen;
 import org.beetl.sql.ext.gen.GenConfig;
 import org.beetl.sql.ext.gen.SourceGen;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 
@@ -12,6 +13,8 @@ public class MapperCodeGen implements CodeGen {
 
     String pkg;
     private String mapperTemplate;
+    @Value(value = "${srcPath}")
+    private String srcPath;
 
     public MapperCodeGen() {
         this.pkg = null;
@@ -50,7 +53,7 @@ public class MapperCodeGen implements CodeGen {
             System.out.println(mapperCode);
         } else {
             try {
-                SourceGen.saveSourceFile("E:/qws/IdeaProjects/yunpingtai/src/main/java", this.pkg, mapperClass, mapperCode);
+                SourceGen.saveSourceFile(srcPath, this.pkg, mapperClass, mapperCode);
             } catch (IOException var11) {
                 throw new RuntimeException("mapper代码生成失败", var11);
             }

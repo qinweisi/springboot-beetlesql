@@ -16,8 +16,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @Author qinweisi
+ * @Description 生成/解析token
+ **/
 public class JwtHelper {
 
+    /**
+     * @Author qinweisi
+     * @Description 解析 -- method1
+     **/
     public static Claims parseJWT(String jsonWebToken, String base64Security) {
         try {
             Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(base64Security))
@@ -28,16 +36,17 @@ public class JwtHelper {
         }
     }
 
+    /**
+     * @Author qinweisi
+     * @Description 创建 -- method1
+     **/
     public static String createJWT(User user, long TTLMillis, String base64Security, String subject) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
-
         // 生成签名密钥
         byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(base64Security);
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
-
         // 添加构成JWT的参数
         JwtBuilder builder = Jwts.builder().setHeaderParam("type", "QMHD")
                 .setSubject(subject)
@@ -48,19 +57,14 @@ public class JwtHelper {
             Date exp = new Date(expMillis);
             builder.setExpiration(exp).setNotBefore(now);
         }
-
         // 生成JWT
         return builder.compact();
     }
 
     /**
-     * 创建Token
-     *
-     * @param uid
-     * @param name
-     * @param subject
-     * @return
-     */
+     * @Author qinweisi
+     * @Description 创建 -- method2
+     **/
     public static String createToken(Long uid, String name, String subject) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256; //指定签名的时候使用的签名算法，也就是header那部分，jjwt已经将这部分内容封装好了。
         long nowMillis = System.currentTimeMillis();//生成JWT的时间
@@ -81,10 +85,9 @@ public class JwtHelper {
     }
 
     /**
-     * 由字符串生成加密key
-     *
-     * @return
-     */
+     * @Author qinweisi
+     * @Description 由字符串生成加密key
+     **/
     private static SecretKey generalKey() {
         String stringKey = Constants.SYSTEM_TOKEN_KEY;//本地配置文件中加密的密文7786df7fc3a34e26a61c034d5ec8245d
         byte[] encodedKey = Base64.decodeBase64(stringKey);//本地的密码解码[B@152f6e2
@@ -95,12 +98,9 @@ public class JwtHelper {
     }
 
     /**
-     * 解密jwt
-     *
-     * @param jwt
-     * @return
-     * @throws Exception
-     */
+     * @Author qinweisi
+     * @Description 解析 -- method2
+     **/
     public static Claims parseToken(String jwt) throws Exception {
         SecretKey key = generalKey();  //签名秘钥，和生成的签名的秘钥一模一样
         Claims claims = Jwts.parser()  //得到DefaultJwtParser

@@ -2,6 +2,7 @@ package cn.com.qws.controller.system;
 
 import cn.com.qws.conf.beetlsql.MapperCodeGen;
 import cn.com.qws.conf.beetlsql.MapperCodeGen;
+import io.swagger.annotations.Api;
 import org.beetl.sql.core.*;
 import org.beetl.sql.core.db.DBStyle;
 import org.beetl.sql.core.db.MySqlStyle;
@@ -11,8 +12,10 @@ import org.beetl.sql.ext.gen.GenConfig;
 import org.beetl.sql.ext.gen.MDCodeGen;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,7 +28,8 @@ import java.util.Set;
  * @Author qinweisi
  * @Date 2019/7/19 09:19
  **/
-@Controller
+@RestController
+@Api(tags = "根据表生成实体、sql文件、dao")
 public class GenController {
 
     // ========数据库配置=========
@@ -39,19 +43,25 @@ public class GenController {
     private String password;
 
     // ========项目路径=========
-    private static String srcPath = "E:/qws/IdeaProjects/yunpingtai/src/main/java";
+    @Value(value = "${srcPath}")
+    private static String srcPath;
     // ========模板的路径, 示例是spring boot的[src/main/resources/beetlsqlTemplate 文件夹]=========
-    private static String templatePath = "/beetlsqlTemplate";
+    @Value(value = "${templatePath}")
+    private static String templatePath;
     // ========md生成路径 要提前创建=========/sys-base/users/main/resources/sql
-    private static String mdPath = "E:/qws/IdeaProjects/yunpingtai/src/main/resources/sql";
+    @Value(value = "${mdPath}")
+    private static String mdPath;
     // ========生成实体类所在的包=========
-    private static String pojoPkg = "cn.com.qws.entity";
+    @Value(value = "${pojoPkg}")
+    private static String pojoPkg;
     // ========生成mapper类所在的包=========
-    private static String mapperPkg = "cn.com.qws.dao";
+    @Value(value = "${mapperPkg}")
+    private static String mapperPkg;
     // ========生成service类所在的包=========
-    private static String servicePkg = "cn.com.qws.service";
+    @Value(value = "${servicePkg}")
+    private static String servicePkg;
 
-    @RequestMapping("/gen")
+    @GetMapping("gen")
     @ResponseBody
     public String genAll() throws Exception {
         //准备工作

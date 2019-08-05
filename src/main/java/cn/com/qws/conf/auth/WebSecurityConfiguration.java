@@ -26,29 +26,6 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 @EnableGlobalMethodSecurity(prePostEnabled = true) //开启方法权限控制
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    /**
-     * 需要放行的URL
-     */
-//    private static final String[] AUTH_WHITELIST = {
-//            // -- register url
-//            "/login*",
-//            "/gen",
-//            // -- swagger ui
-//            "/v2/api-docs",
-//            "/swagger-resources",
-//            "/swagger-resources/**",
-//            "/configuration/ui",
-//            "/configuration/security",
-//            "/swagger-ui.html",
-//            "/doc.html",
-//            "/webjars/**",
-//            "/hardware/**",
-//            "/**",
-//            "/app/**",
-//            "/data/download*"
-//            // other public endpoints of your API may be appended to this array
-//    };
-
     @Autowired
     private CustomUserDetailsService userDetailsService;
 

@@ -68,11 +68,12 @@ public class Constants {
             "/gen",
             // -- swagger ui
             "/v2/api-docs",
-            "/swagger*",
+            "/swagger-resources",
+            "/swagger-resources/**",
             "/configuration/ui",
             "/configuration/security",
             "/doc.html",
-            "/webjars/*",
+            "/webjars/**",
             "/hardware/**",
             "/app/**",
             "/data/download*"
