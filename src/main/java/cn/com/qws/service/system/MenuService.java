@@ -56,7 +56,7 @@ public class MenuService {
     public List<Menu> getMenusByUserId(Long userId){
         Map<String,Object> param = new HashMap<>();
         param.put("userId",userId);
-        return sqlManager.select(SQL_ID + "findAll",Menu.class,param);
+        return sqlManager.select(SQL_ID + "findByUserId",Menu.class,param);
     }
 
 

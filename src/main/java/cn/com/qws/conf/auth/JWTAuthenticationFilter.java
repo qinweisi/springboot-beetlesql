@@ -63,7 +63,7 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletResponse response, String token) {
         Claims claims = null;
         try {
-            claims = JwtHelper.parseJWT(token.replace("Bearer ", ""), "qmhd@2018");
+            claims = JwtHelper.parseJWT(token.replace("Bearer ", ""), Constants.SYSTEM_TOKEN_KEY);
         } catch (Exception e) {
             ResponseUtil.GoResponseSystemException(response, 903, "验证token异常");
             return null;

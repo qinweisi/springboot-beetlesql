@@ -8,7 +8,7 @@ package cn.com.qws.common;
 public class Constants {
 
     //签名秘钥
-    public  static  final  String SYSTEM_TOKEN_KEY = "qmhd@2018!!";
+    public  static  final  String SYSTEM_TOKEN_KEY = "qws2019";
     //
     public static final String TOKEN_CLAIMS_UID = "TOKEN_CLAIMS_UID_1";
     public static final String TOKEN_CLAIMS_NAME = "TOKEN_CLAIMS_NAME_1";

@@ -1,5 +1,6 @@
 package cn.com.qws.entity.system;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.beetl.sql.core.annotatoin.Table;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
  * @Description 用户信息表
  **/
 @Table(name = "environment_test.t_users")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Users {
 
     // pk

@@ -79,7 +79,7 @@ public class LoginController {
 //        String name = authenticate.getName();
         Users userInfo = usersService.queryByLoginName(username);
         Map<String, Object> map = new HashMap<String, Object>();// 24 * 60 * 60 * 1000
-        String token = JwtHelper.createJWT((User) authenticate.getPrincipal(), 24 * 60 * 60 * 1000, "qws@2019", JSON.toJSONString(userInfo));
+        String token = JwtHelper.createJWT((User) authenticate.getPrincipal(), 24 * 60 * 60 * 1000, Constants.SYSTEM_TOKEN_KEY, JSON.toJSONString(userInfo));
         map.put("token", token);
         if (userInfo != null) {
             map.put("username", userInfo.getName());
