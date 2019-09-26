@@ -6,12 +6,18 @@ import cn.com.qws.entity.system.Users;
 import cn.com.qws.service.system.UsersService;
 import cn.com.qws.utils.ConvertUtils;
 import cn.com.qws.utils.StringUtils;
+import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description 用户信息控制器

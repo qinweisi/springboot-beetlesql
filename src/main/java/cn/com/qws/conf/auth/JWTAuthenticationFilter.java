@@ -2,7 +2,7 @@ package cn.com.qws.conf.auth;
 
 import cn.com.qws.common.Constants;
 import cn.com.qws.entity.system.Users;
-import cn.com.qws.utils.RedisUtil;
+import cn.com.qws.utils.RedisUtils;
 import cn.com.qws.utils.ResponseUtil;
 import cn.com.qws.utils.SpringContextUtils;
 import com.alibaba.fastjson.JSON;
@@ -76,12 +76,12 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
                 return null;
             }
             // 由于注入RedisUtil为null，因此采用 获取上下文实例对象 的方式获取实例，如果有更好的实现方法，请修改
-            RedisUtil redisUtil = SpringContextUtils.getBean(RedisUtil.class);
+            RedisUtils redisUtil = SpringContextUtils.getBean(RedisUtils.class);
             // 查询redis中的token
             Object o = redisUtil.get(Constants.REDIS_USER_TOKEN_KEY + userInfo.getId());
             if (token != null) {
                 String rtoken = (String) o;
-                // 判断当前token是否和redis中相同
+                // 判断当前token是否和redis中相同(当redis中token过期时,rtoken为空,因此比较时,token在前,rtoken在后,否则会报空指针)
                 if (!rtoken.equals(token)) {
                     // 不相同抛出异常
                     return null;

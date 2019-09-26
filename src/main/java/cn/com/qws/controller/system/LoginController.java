@@ -9,7 +9,7 @@ import cn.com.qws.entity.system.Users;
 import cn.com.qws.exception.RestExceptionHandler;
 import cn.com.qws.service.system.UsersService;
 import cn.com.qws.utils.ConvertUtils;
-import cn.com.qws.utils.RedisUtil;
+import cn.com.qws.utils.RedisUtils;
 import cn.com.qws.utils.StringUtils;
 import com.alibaba.fastjson.JSON;
 import io.swagger.annotations.Api;
@@ -41,7 +41,7 @@ public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
-    private RedisUtil redisUtil;
+    private RedisUtils redisUtil;
 
     /**
      * @Author qinweisi
