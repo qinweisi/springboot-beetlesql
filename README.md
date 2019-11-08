@@ -15,3 +15,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 * **添加.gitignore文件** 
 1. IDEA环境下安装,settings -> plugin 查询.ignore  点击安装(需要重启)
 2. 项目右键 -> New -> .ignore file -> .gitignore file(Git) 
+
+## kafka
+1. 生产者配置
+2. 消费者配置

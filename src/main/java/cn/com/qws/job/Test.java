@@ -19,9 +19,8 @@ import java.util.UUID;
 @EnableScheduling
 public class Test {
 
-        @Autowired
-        private KafkaService kafkaService;
-
+    @Autowired
+    private KafkaService kafkaService;
 
     /**
      * 定时任务
@@ -29,6 +28,6 @@ public class Test {
     @Scheduled(cron = "0/5 * * * * ?")
     public void send() {
         String message = UUID.randomUUID().toString();
-        kafkaService.push("test",message);
+        kafkaService.push("test", message);
     }
 }
