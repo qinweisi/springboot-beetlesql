@@ -7,6 +7,7 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -46,11 +47,13 @@ public class Swagger2 {
 	// 构建 api文档的详细信息函数
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
+				// 作者信息
+				.contact(new Contact("qinweisi","",""))
 				// 页面标题
-				.title("")
+				.title("接口文档")
 				// 版本号
 				.version("1.0")
 				// 描述
-				.description("").build();
+				.description("随便写写").build();
 	}
 }

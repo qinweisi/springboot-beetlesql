@@ -99,7 +99,6 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
     private boolean isWhiteURL(String currentURL) {
         for (String whiteURL : Constants.AUTH_WHITELIST) {
             if (pathMatcher.match(whiteURL, currentURL)) {
-                logger.info("当前url: " + currentURL + "在白名单内");
                 return true;
             }
         }
